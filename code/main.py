@@ -19,7 +19,7 @@ class Main:
         """
         self.vehicle_list.append(Vehicle)
 
-    def find_vehicles_by_year(self, year):
+    def find_vehicles_by_year(self, year, year_range):
         """
         Busca vehículos por su año de fabricación.
 
@@ -28,8 +28,18 @@ class Main:
         :return: Lista de vehículos fabricados en el año especificado.
         :rtype: list
         """
-        vehicles_by_year = [Vehicle for Vehicle in self.vehicle_list if vehicle.year == year]
-        return vehicles_by_year
+
+        #Modifica la clase "Main", para que ahora el filtro por año permita buscar vehículos
+        #que se encuentren en un rango de años. Actualiza el README.md con ejemplos de
+        #cómo calcular la antigüedad de un vehículo.
+
+        vehicles_by_year =  [vehicle for vehicle in self.vehicle_list if vehicle.year == year]
+        vehicles_by_range = [vehicle for vehicle in self.vehicle_list if vehicle.year in year_range]
+
+        if year:
+            return vehicles_by_year
+        else:
+            return vehicles_by_range
 
     def imprimir_vehiculos(self):
 
