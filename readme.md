@@ -9,4 +9,4 @@ docs (cambios en la documentación),
 style (formato y estilo de código que no afecta la lógica),
 refactor (cambios en el código que no corrigen errores ni añaden características).
 
-Título del commit: Es una breve descripción concisa de la acción realizada, enfocándose en lo que se cambió, agregó o corrigió.
+Título del commit: Es una breve descripción concisa de la acción realizada, enfocándose en lo que se cambió, agregó o corrigió. 
