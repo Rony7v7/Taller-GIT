@@ -1,5 +1,5 @@
 class Vehicle:
-    def __init__(self, brand, model, year, kilometers, current_status, type_fuel, service_date, color):
+    def __init__(self, brand, model, year, kilometers, current_status, type_fuel, service_date, color, potencia):
         self.brand = brand
         self.model = model
         self.year = year
@@ -8,9 +8,10 @@ class Vehicle:
         self.type_fuel = type_fuel
         self.service_date = service_date
         self.color = color
+        self.potencia = potencia
     
     def __str__(self):
-        return f'{self.brand} {self.model} {self.year} {self.kilometers} {self.current_status} {self.type_fuel} {self.service_date} {self.color}'
+        return f'{self.brand} {self.model} {self.year} {self.kilometers} {self.current_status} {self.type_fuel} {self.service_date} {self.color} {self.potencia}'
     
     # Getters & Setters
     def get_brand(self):

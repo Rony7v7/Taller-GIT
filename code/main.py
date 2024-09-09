@@ -1,39 +1,3 @@
-class Vehiculo:
-    COMBUSTIBLES_VALIDOS = ["Gasolina", "Diesel", "Eléctrico"]
-
-    def __init__(self, marca, modelo, año, tipo_combustible):
-        """
-        Inicializa un vehículo con los atributos de marca, modelo, año y tipo de combustible.
-        
-        :param marca: Marca del vehículo.
-        :param modelo: Modelo del vehículo.
-        :param año: Año de fabricación del vehículo.
-        :param tipo_combustible: Tipo de combustible del vehículo.
-        """
-        self.marca = marca
-        self.modelo = modelo
-        self.año = año
-        self.tipo_combustible = None  
-        self.set_tipo_combustible(tipo_combustible)
-
-    def set_tipo_combustible(self, tipo_combustible):
-        """
-        Valida y establece el tipo de combustible del vehículo.
-        
-        :param tipo_combustible: Tipo de combustible a establecer.
-        :raises ValueError: Si el tipo de combustible no es válido.
-        """
-        if tipo_combustible not in Vehiculo.COMBUSTIBLES_VALIDOS:
-            raise ValueError(f"Tipo de combustible inválido. Debe ser uno de {Vehiculo.COMBUSTIBLES_VALIDOS}.")
-        self.tipo_combustible = tipo_combustible
-
-    def __str__(self):
-        """
-        Devuelve una representación en cadena del vehículo.
-        """
-        return f"Vehiculo(marca={self.marca}, modelo={self.modelo}, año={self.año}, combustible={self.tipo_combustible})"
-
-
 class Main:
     """
     Clase principal que gestiona una lista de vehículos.
@@ -91,18 +55,21 @@ class Main:
         Imprime la lista de vehículos con sus características.
         """
 
-        if not self.vehiculos:
+        if not self.vehicle_list:
             print("No hay vehículos en la flota.")
             return
         
-        for vehiculo in self.vehiculos:
+        for vehiculo in self.vehicle_list:
             print(f"Marca: {vehiculo.marca}")
             print(f"Modelo: {vehiculo.modelo}")
             print(f"Año: {vehiculo.año}")
             print(f"Kilometraje: {vehiculo.kilometraje} km")
             print(f"Estado actual: {vehiculo.estado_actual}")
             print(f"Tipo de combustible: {vehiculo.tipo_combustible}")
+            print(f"El color: {vehiculo.color}")
+            print(f"El color: {vehiculo.potencia}")
             print("-" * 30)
+            
 
         for vehicle in self.vehicle_list:
             print(f"Marca: {vehicle.marca}, Modelo: {vehicle.modelo}, Año: {vehicle.año}, Combustible: {vehicle.tipo_combustible}")
