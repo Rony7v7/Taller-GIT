@@ -31,9 +31,23 @@ class Main:
         vehicles_by_year = [Vehicle for Vehicle in self.vehicle_list if vehicle.year == year]
         return vehicles_by_year
 
-    def print_vehicle_list(self):
+    def imprimir_vehiculos(self):
+
         """
         Imprime la lista de vehículos con sus características.
         """
-        for Vehicle in self.vehicle_list:
-            print(f"Marca: {Vehicle.brand}, Modelo: {Vehicle.model}, Año: {Vehicle.year}")
+
+        if not self.vehiculos:
+            print("No hay vehículos en la flota.")
+            return
+        
+        for vehiculo in self.vehiculos:
+            print(f"Marca: {vehiculo.marca}")
+            print(f"Modelo: {vehiculo.modelo}")
+            print(f"Año: {vehiculo.año}")
+            print(f"Kilometraje: {vehiculo.kilometraje} km")
+            print(f"Estado actual: {vehiculo.estado_actual}")
+            print(f"Tipo de combustible: {vehiculo.tipo_combustible}")
+            print("-" * 30)
+
+
