@@ -10,22 +10,24 @@ class Main:
         """
         self.vehicle_list = []
 
-    def add_vehicle(self, Vehicle):
+    def add_vehicle(self, vehicle):
         """
         Agrega un vehículo a la lista.
 
         :param vehicle: Objeto de tipo Vehicle.
         :type vehicle: Vehicle
         """
-        self.vehicle_list.append(Vehicle)
+        self.vehicle_list.append(vehicle)
 
-    def find_vehicles_by_year(self, year, year_range):
+    def find_vehicles_by_year(self, year, year_range,mayor_o_menor):
         """
         Busca vehículos por su año de fabricación.
 
         :param year: Año de fabricación del vehículo.
         :type year: int
-        :return: Lista de vehículos fabricados en el año especificado.
+        :param mayor_o_menor: Especifica si el filtro es para vehículos mayores o menores al año especificado.
+        :type mayor_o_menor: str
+        :return: Lista de vehículos que cumplen con el criterio de año.
         :rtype: list
         """
 
@@ -37,6 +39,10 @@ class Main:
         vehicles_by_range = [vehicle for vehicle in self.vehicle_list if vehicle.year in year_range]
 
         if year:
+            if mayor_o_menor == 'mayor':
+                vehicles_by_year = [vehicle for vehicle in self.vehicle_list if vehicle.year > year]
+            elif mayor_o_menor == 'menor':
+                vehicles_by_year = [vehicle for vehicle in self.vehicle_list if vehicle.year < year]
             return vehicles_by_year
         else:
             return vehicles_by_range
@@ -46,18 +52,6 @@ class Main:
         """
         Imprime la lista de vehículos con sus características.
         """
-
-        if not self.vehiculos:
-            print("No hay vehículos en la flota.")
-            return
-        
-        for vehiculo in self.vehiculos:
-            print(f"Marca: {vehiculo.marca}")
-            print(f"Modelo: {vehiculo.modelo}")
-            print(f"Año: {vehiculo.año}")
-            print(f"Kilometraje: {vehiculo.kilometraje} km")
-            print(f"Estado actual: {vehiculo.estado_actual}")
-            print(f"Tipo de combustible: {vehiculo.tipo_combustible}")
-            print("-" * 30)
-
+        for vehicle in self.vehicle_list:
+            print(f"Marca: {vehicle.brand}, Modelo: {vehicle.model}, Año: {vehicle.year}")
 
