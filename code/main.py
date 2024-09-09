@@ -1,71 +1,69 @@
+from Vehicle import Vehicle
+from HistorialMantenimiento import HistorialMantenimiento
+
 class Main:
     """
-    Clase principal que gestiona una lista de vehículos.
-    Permite agregar vehículos y buscarlos por año de fabricación.
+    Esta clase representa el sistema principal para gestionar una lista de vehículos.
+    Permite agregar vehículos a la lista y buscarlos por año.
     """
 
-    def __init__(self):
+    def _init_(self):
         """
-        Inicializa la lista de vehículos.
+        Inicializa la clase Main con una lista vacía de vehículos.
         """
-        self.vehicle_list = []
+        self.vehiculos = []
 
-    def add_vehicle(self, vehicle):
+    def agregar_vehiculo(self, vehiculo):
         """
-        Agrega un vehículo a la lista.
+        Agrega un vehículo a la lista de vehículos.
 
-        :param vehicle: Objeto de tipo Vehiculo.
-        :type vehicle: Vehiculo
+        :param vehiculo: Instancia de la clase Vehicle que representa un vehículo.
+        :type vehiculo: Vehicle
         """
-        self.vehicle_list.append(vehicle)
+        self.vehiculos.append(vehiculo)
 
-    def find_vehicles_by_year(self, year, year_range,mayor_o_menor):
+    def buscar_vehiculo_por_anio(self, anio):
         """
-        Busca vehículos por su año de fabricación.
+        Busca y retorna los vehículos que fueron fabricados en un año específico.
 
-        :param year: Año de fabricación del vehículo.
-        :type year: int
-        :param mayor_o_menor: Especifica si el filtro es para vehículos mayores o menores al año especificado.
-        :type mayor_o_menor: str
-        :return: Lista de vehículos que cumplen con el criterio de año.
+        :param anio: Año de fabricación del vehículo a buscar.
+        :type anio: int
+        :return: Lista de vehículos que coinciden con el año dado.
         :rtype: list
         """
-        vehicles_by_year =  [vehicle for vehicle in self.vehicle_list if vehicle.year == year]
-        vehicles_by_range = [vehicle for vehicle in self.vehicle_list if vehicle.year in year_range]
+        vehiculos_encontrados = [vehiculo for vehiculo in self.vehiculos if vehiculo.anio == anio]
+        return vehiculos_encontrados
 
-        if year:
-            if mayor_o_menor == 'mayor':
-                vehicles_by_year = [vehicle for vehicle in self.vehicle_list if vehicle.year > year]
-            elif mayor_o_menor == 'menor':
-                vehicles_by_year = [vehicle for vehicle in self.vehicle_list if vehicle.year < year]
-            return vehicles_by_year
-        else:
-            return vehicles_by_range
 
-    def imprimir_vehiculos(self):
+def main():
+    """
+    Función principal para probar la funcionalidad de la clase Main.
+    """
+    sistema = Main()
 
-        """
-        Imprime la lista de vehículos con sus características.
-        """
+    # Crear algunos vehículos de ejemplo
+# Crear algunas instancias de vehículos con todos los argumentos necesarios
+    vehiculo1 = Vehicle("Toyota", "Corolla", 2010, 100000, "Operativo", "Gasolina", "2023-01-01", "Blanco", 132)
+    vehiculo2 = Vehicle("Ford", "Focus", 2015, 75000, "Operativo", "Diesel", "2022-05-15", "Negro", 150)
+    vehiculo3 = Vehicle("Honda", "Civic", 2010, 120000, "Operativo", "Gasolina", "2023-06-12", "Rojo", 140)
 
-        if not self.vehicle_list:
-            print("No hay vehículos en la flota.")
-            return
-        
-        for vehiculo in self.vehicle_list:
-            print(f"Marca: {vehiculo.marca}")
-            print(f"Modelo: {vehiculo.modelo}")
-            print(f"Año: {vehiculo.año}")
-            print(f"Kilometraje: {vehiculo.kilometraje} km")
-            print(f"Estado actual: {vehiculo.estado_actual}")
-            print(f"Tipo de combustible: {vehiculo.tipo_combustible}")
-            print(f"El color: {vehiculo.color}")
-            print(f"El color: {vehiculo.potencia}")
-            print("-" * 30)
-            
+    # Agregar vehículos al sistema
+    sistema.agregar_vehiculo(vehiculo1)
+    sistema.agregar_vehiculo(vehiculo2)
+    sistema.agregar_vehiculo(vehiculo3)
 
-        for vehicle in self.vehicle_list:
-            print(f"Marca: {vehicle.marca}, Modelo: {vehicle.modelo}, Año: {vehicle.año}, Combustible: {vehicle.tipo_combustible}")
-        for vehicle in self.vehicle_list:
-            print(f"Marca: {vehicle.brand}, Modelo: {vehicle.model}, Año: {vehicle.year}")
+    # Buscar vehículos del año 2015
+    print("Vehículos del año 2015:")
+    vehiculos_2015 = sistema.buscar_vehiculo_por_anio(2015)
+    for vehiculo in vehiculos_2015:
+        print(f"Marca: {vehiculo.marca}, Modelo: {vehiculo.modelo}, Año: {vehiculo.anio}")
 
+    # Buscar vehículos del año 2020
+    print("\nVehículos del año 2020:")
+    vehiculos_2020 = sistema.buscar_vehiculo_por_anio(2020)
+    for vehiculo in vehiculos_2020:
+        print(f"Marca: {vehiculo.marca}, Modelo: {vehiculo.modelo}, Año: {vehiculo.anio}")
+
+
+if __name__ == "__main__":
+    main()
